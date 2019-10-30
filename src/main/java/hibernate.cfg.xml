@@ -1,0 +1,45 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+   <session-factory>
+   
+      <property name = "hibernate.dialect">
+         org.hibernate.dialect.MySQLDialect
+      </property>
+      
+      <property name = "hibernate.connection.driver_class">
+         com.mysql.jdbc.Driver
+      </property>
+      
+      <property name="current_session_context_class">thread</property>
+      <property name="show_sql">true</property>
+      
+      <property name = "hibernate.connection.url">
+         jdbc:mysql://localhost/hotels?useSSL=false
+      </property>
+      
+      
+      <property name = "hibernate.connection.username">
+         root
+      </property>
+      
+      <property name = "hibernate.connection.password">
+         root
+      </property>
+      
+      <!-- List of XML mapping files -->
+      
+       <mapping class="com.javatpoint.Hotels.Hotel"/>  
+       <mapping class="com.javatpoint.Hotels.RoomType"/> 
+       <mapping class="com.javatpoint.Hotels.Position"/> 
+       <mapping class="com.javatpoint.Hotels.Guest"/>     
+        <mapping class="com.javatpoint.Hotels.Service"/>
+         <mapping class="com.javatpoint.Hotels.Room"/>
+          <mapping class="com.javatpoint.Hotels.User"/>
+           <mapping class="com.javatpoint.Hotels.CheckOutType"/>
+          
+       
+      
+   </session-factory>
+</hibernate-configuration>
