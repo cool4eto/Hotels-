@@ -23,6 +23,12 @@ public class Hotel {
 		return idHotel;
 	}
 	
+	public Hotel(int idHotel, String hotelName) {
+		super();
+		this.idHotel = idHotel;
+		this.hotelName = hotelName;
+	}
+
 	public Hotel() {
 		super();
 	}
@@ -102,6 +108,7 @@ public class Hotel {
 		  query.setParameter("name", Name);
 		  return (Hotel) query.list().get(0);
 	}
+	
 	
 	
 	
