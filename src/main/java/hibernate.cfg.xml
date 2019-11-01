@@ -38,6 +38,8 @@
          <mapping class="com.javatpoint.Hotels.Room"/>
           <mapping class="com.javatpoint.Hotels.User"/>
            <mapping class="com.javatpoint.Hotels.CheckOutType"/>
+             <mapping class="com.javatpoint.Hotels.Reservation"/>
+               <mapping class="com.javatpoint.Hotels.Consumation"/>
           
        
       
