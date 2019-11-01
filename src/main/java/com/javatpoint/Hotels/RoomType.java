@@ -28,11 +28,6 @@ public class RoomType{
 		public RoomType() {
 			super();
 		}
-		public RoomType(int idRoomType, String typeRoom) {
-			super();
-			this.idRoomType = idRoomType;
-			this.typeRoom = typeRoom;
-		}
 		public void setIdRoomType(int idRoomType) {
 			this.idRoomType = idRoomType;
 		}

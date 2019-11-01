@@ -19,7 +19,7 @@ public class Guest {
 	private int Rating;
 	private String PIN;//Egn
 	@Id
-	@Column(name="idGuest")
+	@Column(name="idPosition")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getIdGuest() {
 		return idGuest;

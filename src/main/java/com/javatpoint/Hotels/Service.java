@@ -18,7 +18,7 @@ public class Service {
 	private Double ServicePrice;
 	private String ServiceSeason;
 	@Id
-	@Column(name="idService")
+	@Column(name="idPosition")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getIdService() {
 		return idService;
