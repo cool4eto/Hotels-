@@ -14,11 +14,15 @@
               <MenuItem mnemonicParsing="false" onAction="#CreateTypeRoom" text="Тип Стая" />
                   <MenuItem mnemonicParsing="false" onAction="#CreateHotel" text="Хотел" />
                   <MenuItem mnemonicParsing="false" onAction="#CreateRoom" text="Стая" />
+                  <MenuItem mnemonicParsing="false" onAction="#CreatePosition" text="Позиция" />
+                  <MenuItem mnemonicParsing="false" onAction="#CreateUser" text="Потребител" />
+                  <MenuItem mnemonicParsing="false" onAction="#CreateService" text="Услуга" />
+                  <MenuItem mnemonicParsing="false" onAction="#CreateGuest" text="Гост" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="JustTry">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#SearchGuest" text="Търсене гост" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

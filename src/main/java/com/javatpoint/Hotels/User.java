@@ -1,5 +1,6 @@
 package com.javatpoint.Hotels;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -22,7 +23,7 @@ public class User extends query{
 	private String password;
 	private String name;
 	private boolean loginstatus;
-	private Date regdate;
+	private LocalDate regdate;
 	private Position position;
 	private Hotel hotel;
 	
@@ -60,10 +61,10 @@ public class User extends query{
 	public void setLoginstatus(boolean loginstatus) {
 		this.loginstatus = loginstatus;
 	}
-	public Date getRegdate() {
+	public LocalDate getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(Date regdate) {
+	public void setRegdate(LocalDate regdate) {
 		this.regdate = regdate;
 	}
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -86,7 +87,7 @@ public class User extends query{
 				+ ", loginstatus=" + loginstatus + ", regdate=" + regdate + ", position=" + position + ", hotel="
 				+ hotel + "]";
 	}
-	public User(int idUser, String username, String password, String name, boolean loginstatus, Date regdate,
+	public User(int idUser, String username, String password, String name, boolean loginstatus, LocalDate regdate,
 			Position position, Hotel hotel) {
 		super();
 		this.idUser = idUser;
@@ -98,7 +99,7 @@ public class User extends query{
 		this.position = position;
 		this.hotel = hotel;
 	}
-	public User(String username, String password, String name, boolean loginstatus, Date regdate, Position position,
+	public User(String username, String password, String name, boolean loginstatus, LocalDate regdate, Position position,
 			Hotel hotel) {
 		super();
 		this.username = username;

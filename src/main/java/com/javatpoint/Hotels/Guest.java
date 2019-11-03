@@ -51,22 +51,22 @@ public class Guest {
 	public String getPIN() {
 		return PIN;
 	}
-	public void setPIN(String pIN) {
-		PIN = pIN;
+	public void setPIN(String PIN) {
+		this.PIN = PIN;
 	}
-	public Guest(int idGuest, String name, String adress, String pIN) {
+	public Guest(int idGuest, String name, String adress, String PIN) {
 		super();
 		this.idGuest = idGuest;
 		Name = name;
 		Adress = adress;
-		PIN = pIN;
+		this.PIN = PIN;
 		Rating=50;
 	}
-	public Guest(String name, String adress, String pIN) {
+	public Guest(String name, String adress, String PIN) {
 		super();
 		Name = name;
 		Adress = adress;
-		PIN = pIN;
+		this.PIN = PIN;
 		Rating=50;
 	}
 	@Override
