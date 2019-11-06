@@ -96,19 +96,20 @@ public class Main extends Application{
 		out1.store();*/
 		//launch(args);
 		
-		/*LocalDate CheckIn = LocalDate.of(2019, 10, 20);
-		LocalDate CheckOut=LocalDate.of(2019, 10, 31);
+		/*LocalDate CheckIn = LocalDate.of(2019, 11, 18);
+		LocalDate CheckOut=LocalDate.of(2019, 11, 25);
 		Guest guest1=new Guest(1,"Ангел Киров","Варна, Левски","9801121002");
 		CheckOutType checkOut1=new CheckOutType(3,"extend");
-		RoomType roomtype1=new RoomType(3,"Suite");
-		Hotel hotel1 = new Hotel(3,"Гранда");
-		Room room1=new Room(3,103,30,roomtype1,hotel1);
+		RoomType roomtype1=new RoomType(2,"Double");
+		Hotel hotel1 = new Hotel(1,"Марина");
+		Room room1=new Room(2,102,30,roomtype1,hotel1);
 		Position pos1=new Position(3,"Рецепционист");
-		Date date1=new Date();
+		LocalDate date1=LocalDate.of(2019, 11, 06);
 		User user1=new User(1,"angelkirov","123","Angel Kirov",true,date1,pos1,hotel1);
-	
-		Reservation res1=new Reservation(3,CheckIn,CheckOut,50.,checkOut1,guest1,room1,user1);*/
+		Reservation res1=new Reservation(2,CheckIn,CheckOut,50,checkOut1,guest1,room1,user1,hotel1);
 		//res1.store();
+		
+		res1.retreive();*/
 		
 		//launch(args);
 	//	Service serv1=new Service(1,"Джет Ски",50.,"Лято");
@@ -118,6 +119,7 @@ public class Main extends Application{
 		
 		//cons1.store();
 		//cons1.toString();
+	
 		launch(args);
 		
 

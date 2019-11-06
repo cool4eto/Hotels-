@@ -41,7 +41,6 @@ public class RoomController {
     	String hql = "from Hotel";
     	Query query = session.createQuery(hql);
     	List<Hotel> hotels = query.list();
-    	
     	ObservableList<String> cursors = FXCollections.observableArrayList();//suzdawa ni list w koito shte slagame imenata na hotelite
     	for(int i =0;i<hotels.size();i++)//obhojda wsichki hoteli
     	{

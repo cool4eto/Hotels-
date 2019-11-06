@@ -7,6 +7,8 @@ import org.hibernate.Session;
 
 import com.javatpoint.Hotels.HibernateUtil;
 import com.javatpoint.Hotels.Hotel;
+import com.javatpoint.Hotels.SessionUserHelper;
+import com.javatpoint.Hotels.User;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -29,7 +31,8 @@ public class LoginController {
 	private PasswordField txtPassword;
 	@FXML
 	private Button login1;
-	
+	 public User LoggedUser;//za da proverqwam koi user e lognat
+
 	Boolean CheckLogin(String username,String password)//trqbwa da si go probvam kogato wkaram user
 	{
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -39,7 +42,8 @@ public class LoginController {
 			   Query query = session.createQuery(hql);
 			   query.setParameter("name",username);
 			   query.setParameter("pass", password);
-			   List<Hotel> user = query.list();
+			   List<User> user = query.list();
+			  LoggedUser= user.get(0);
 			   //commit transaction
 			   session.getTransaction().commit();
 			  if(user.isEmpty())
@@ -109,7 +113,8 @@ public class LoginController {
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
-			
+			//System.out.println(LoggedUser.toString());
+		SessionUserHelper.setCurrentUser(LoggedUser);
 		}
 		else
 			lbStatus.setText("Login Failed");

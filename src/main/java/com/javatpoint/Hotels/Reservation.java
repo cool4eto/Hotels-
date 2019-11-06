@@ -2,6 +2,8 @@ package com.javatpoint.Hotels;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,7 @@ import javax.persistence.Table;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 
 
@@ -30,6 +33,7 @@ public class Reservation {
 	private Guest guest;
 	private Room room;
 	private User user;
+	private Hotel hotel;
 
 	@Id
 	@Column(name="idReservation")
@@ -94,13 +98,20 @@ public class Reservation {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	@ManyToOne(cascade = CascadeType.MERGE)//ako ne e taka tuk i w user dava greshka pri storvaneto na reservation
+	public Hotel getHotel() {
+		return hotel;
+	}
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
 	public Reservation() {
 		super();
 	}
 	
 	
 	public Reservation(int idReservation, LocalDate fromDate, LocalDate toDate, double advPayment, 
-			CheckOutType checkOutType, Guest guest, Room room, User user) {
+			CheckOutType checkOutType, Guest guest, Room room, User user,Hotel hotel) {
 		super();
 		this.idReservation = idReservation;
 		this.fromDate = fromDate;
@@ -111,10 +122,11 @@ public class Reservation {
 		this.guest = guest;
 		this.room = room;
 		this.user = user;
+		this.hotel=hotel;
 		this.checkedOut=false;
 	}
 	public Reservation(LocalDate fromDate, LocalDate toDate, double advPayment, CheckOutType checkOutType, Guest guest, Room room,
-			User user) {
+			User user,Hotel hotel) {
 		super();
 		this.fromDate = fromDate;
 		this.toDate = toDate;
@@ -123,7 +135,22 @@ public class Reservation {
 		this.guest = guest;
 		this.room = room;
 		this.user = user;
+		this.hotel=hotel;
 		this.checkedOut=false;
+	}
+	public Reservation(int idReservation, LocalDate fromDate, LocalDate toDate, double advPayment, Boolean checkedOut,
+			CheckOutType checkOutType, Guest guest, Room room, User user, Hotel hotel) {
+		super();
+		this.idReservation = idReservation;
+		this.fromDate = fromDate;
+		this.toDate = toDate;
+		this.advPayment = advPayment;
+		this.checkedOut = checkedOut;
+		this.checkOutType = checkOutType;
+		this.guest = guest;
+		this.room = room;
+		this.user = user;
+		this.hotel = hotel;
 	}
 	public void store()//po dobriq variant za store zashtoto imame samo edin session factory
 	{
@@ -142,6 +169,26 @@ public class Reservation {
 			   session.close();
 			   System.out.println("Storred correctly");
 			  }
+	}
+	public void retreive()
+	{//towa si go ostawqm za da pokaja buga w hibernate @6F12881
+		Session session = HibernateUtil.getSessionFactory().openSession();
+    	String hql = "from Reservation";
+    	Query query = session.createQuery(hql);
+    	List<Reservation> reservations = query.list();
+    	System.out.println(reservations.toString());
+    	System.out.println(reservations.get(2).getIdReservation());
+    	System.out.println(reservations.get(2).getFromDate());
+    	System.out.println(reservations.get(2).getToDate());
+    	System.out.println(reservations.get(2).getAdvPayment());
+    	System.out.println(reservations.get(2).getCheckedOut());
+    	System.out.println(reservations.get(2).getCheckOutType());
+    	System.out.println(reservations.get(2).getGuest());
+    	System.out.println(reservations.get(2).getRoom());
+    	System.out.println(reservations.get(2).getUser());
+    	System.out.println(reservations.get(2).getHotel());
+    	//towa tapoto bagawo neshto dawa @irandom chislo shoto mu idwa twarde golqmo da mi opi6e rezerwaciqta
+    	
 	}
 	
 	

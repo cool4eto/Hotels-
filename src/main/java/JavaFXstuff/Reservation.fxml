@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXstuff.ReservationController">
+   <children>
+      <Label layoutX="51.0" layoutY="41.0" text="Начална дата: " />
+      <DatePicker fx:id="Date1" layoutX="151.0" layoutY="36.0" />
+      <DatePicker fx:id="Date2" layoutX="151.0" layoutY="94.0" />
+      <Label layoutX="51.0" layoutY="99.0" text="Крайна дата: " />
+      <Label layoutX="51.0" layoutY="143.0" text="Авансово Плащане: " />
+      <TextField fx:id="TextField1" layoutX="192.0" layoutY="138.0" prefHeight="31.0" prefWidth="177.0" />
+      <Button fx:id="Button1" layoutX="51.0" layoutY="181.0" mnemonicParsing="false" onAction="#SearchGuest" text="Избери гост" />
+      <Label layoutX="51.0" layoutY="231.0" text="Избери тип на стаята:" />
+      <ChoiceBox fx:id="ChoiceBox1" layoutX="206.0" layoutY="226.0" prefWidth="150.0" />
+      <TableView fx:id="TableView1" layoutX="480.0" layoutY="38.0" prefHeight="200.0" prefWidth="262.0">
+        <columns>
+          <TableColumn fx:id="roomNumber" prefWidth="132.0" text="Номер на стая" />
+          <TableColumn fx:id="typeRoom" prefWidth="130.0" text="Тип" />
+        </columns>
+      </TableView>
+      <Button fx:id="Button2" layoutX="448.0" layoutY="270.0" mnemonicParsing="false" onAction="#save" text="Запази(оставен защото не знам дали трябва" />
+      <Button layoutX="533.0" layoutY="335.0" mnemonicParsing="false" onAction="#zapazwane" text="Вкараи в базата" />
+   </children>
+</AnchorPane>

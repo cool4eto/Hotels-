@@ -20,6 +20,7 @@
             <TableColumn fx:id="PIN" prefWidth="238.0" text="ПИН (ЕГН)" />
         </columns>
       </TableView>
-      <Button fx:id="Button1" layoutX="339.0" layoutY="34.0" mnemonicParsing="false" text="Избери" />
+      <Button fx:id="Button2" layoutX="404.0" layoutY="34.0" mnemonicParsing="false" onAction="#addGuest" text="Въведи нов потребител" visible="false" />
+      <Button fx:id="Button1" layoutX="310.0" layoutY="34.0" mnemonicParsing="false" onAction="#send" text="Избери" />
    </children>
 </AnchorPane>

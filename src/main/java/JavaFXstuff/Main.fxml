@@ -18,6 +18,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#CreateUser" text="Потребител" />
                   <MenuItem mnemonicParsing="false" onAction="#CreateService" text="Услуга" />
                   <MenuItem mnemonicParsing="false" onAction="#CreateGuest" text="Гост" />
+                  <MenuItem mnemonicParsing="false" onAction="#CreateReservation" text="Резервация" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="JustTry">

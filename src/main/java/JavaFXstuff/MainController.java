@@ -90,4 +90,14 @@ public class MainController {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	@FXML
+	private void CreateReservation(ActionEvent event) throws Exception{
+		Stage primaryStage=new Stage();
+		Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/Reservation.fxml"));
+		primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
+		Scene scene = new Scene(root,960,540);
+		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
 }

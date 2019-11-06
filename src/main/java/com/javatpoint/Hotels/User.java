@@ -74,7 +74,7 @@ public class User extends query{
 	public void setPosition(Position position) {
 		this.position = position;
 	}
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)//ako ne e taka tuk i v reservation dava greshka pri store na reservation
 	public Hotel getHotel() {
 		return hotel;
 	}

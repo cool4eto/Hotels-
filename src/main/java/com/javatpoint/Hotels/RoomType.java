@@ -44,7 +44,8 @@ public class RoomType{
 		}
 		@Override
 		public String toString() {
-			return "RoomType [idRoomType=" + idRoomType + ", typeRoom=" + typeRoom + "]";
+			//return "RoomType [idRoomType=" + idRoomType + ", typeRoom=" + typeRoom + "]";
+			return this.getTypeRoom();
 		}
 		public RoomType(String typeRoom) {
 			super();
