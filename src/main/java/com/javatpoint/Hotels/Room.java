@@ -46,8 +46,9 @@ public class Room {
 	
 	@Override
 	public String toString() {
-		return "Room [idRoom=" + idRoom + ", roomNumber=" + roomNumber + ", Rate=" + Rate + ", roomtype=" + roomtype
-				+ ", hotel=" + hotel + "]";
+		/*return "Room [idRoom=" + idRoom + ", roomNumber=" + roomNumber + ", Rate=" + Rate + ", roomtype=" + roomtype
+				+ ", hotel=" + hotel + "]";*/
+		return Integer.toString(roomNumber) ;//za da moga da go polzwam w additionalServiceController
 	}
 	public Room(int idRoom, int roomNumber, double rate, RoomType roomtype, Hotel hotel) {
 		super();

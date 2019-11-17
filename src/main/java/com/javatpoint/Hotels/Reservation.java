@@ -190,7 +190,24 @@ public class Reservation {
     	//towa tapoto bagawo neshto dawa @irandom chislo shoto mu idwa twarde golqmo da mi opi6e rezerwaciqta
     	
 	}
-	
+	public void update()//po dobriq variant za store zashtoto imame samo edin session factory
+	{
+		   Session session = HibernateUtil.getSessionFactory().openSession();
+		try {//start transaction
+			   session.beginTransaction();   
+			   // save into database
+			   session.update(this);
+			   //commit transaction
+			   session.getTransaction().commit();
+				} 
+		catch (Exception e) {
+			   e.printStackTrace();
+			  }
+		finally{//close session
+			   session.close();
+			   System.out.println("Storred correctly");
+			  }
+	}
 	
 	
 }

@@ -107,15 +107,15 @@ public class Main extends Application{
 		LocalDate date1=LocalDate.of(2019, 11, 06);
 		User user1=new User(1,"angelkirov","123","Angel Kirov",true,date1,pos1,hotel1);
 		Reservation res1=new Reservation(2,CheckIn,CheckOut,50,checkOut1,guest1,room1,user1,hotel1);
-		//res1.store();
+		//res1.store();*/
 		
-		res1.retreive();*/
+		//res1.retreive();
 		
 		//launch(args);
-	//	Service serv1=new Service(1,"Джет Ски",50.,"Лято");
-		//serv1.store();
-		//Consumation cons1=new Consumation(4,res1,serv1);
-		
+		/*Service serv1=new Service(1,"Джет Ски",50.,"Лято");
+		serv1.store();
+		Consumation cons1=new Consumation(4,res1,serv1);
+		cons1.store();*/
 		
 		//cons1.store();
 		//cons1.toString();

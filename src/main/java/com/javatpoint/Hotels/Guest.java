@@ -10,6 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import javafx.beans.property.StringProperty;
+
 @Entity
 @Table(name="Guest")
 public class Guest {
@@ -71,8 +73,9 @@ public class Guest {
 	}
 	@Override
 	public String toString() {
-		return "Guest [idGuest=" + idGuest + ", Name=" + Name + ", Adress=" + Adress + ", Rating=" + Rating + ", PIN="
-				+ PIN + "]";
+		/*return "Guest [idGuest=" + idGuest + ", Name=" + Name + ", Adress=" + Adress + ", Rating=" + Rating + ", PIN="
+				+ PIN + "]";*/
+		return Name;//za da moga da go polzwam w AdditionalSercviceController
 	}
 	public void store()//po dobriq variant za store zashtoto imame samo edin session factory
 	{

@@ -19,6 +19,8 @@
                   <MenuItem mnemonicParsing="false" onAction="#CreateService" text="Услуга" />
                   <MenuItem mnemonicParsing="false" onAction="#CreateGuest" text="Гост" />
                   <MenuItem mnemonicParsing="false" onAction="#CreateReservation" text="Резервация" />
+                  <MenuItem mnemonicParsing="false" onAction="#AddAdditionalService" text="Начисляване на Допълнителна услуга" />
+                  <MenuItem mnemonicParsing="false" onAction="#CheckOut" text="CheckOut" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="JustTry">
@@ -26,9 +28,10 @@
               <MenuItem mnemonicParsing="false" onAction="#SearchGuest" text="Търсене гост" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Справки">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#UsersData" text="Служители" />
+                  <MenuItem mnemonicParsing="false" onAction="#ReservationsData" text="Резервации" />
             </items>
           </Menu>
         </menus>

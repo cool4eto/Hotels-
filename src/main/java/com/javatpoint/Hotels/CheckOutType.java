@@ -35,7 +35,8 @@ public class CheckOutType {
 	}
 	@Override
 	public String toString() {
-		return "CheckOutType [idCheckOutType=" + idCheckOutType + ", outType=" + outType + "]";
+		//return "CheckOutType [idCheckOutType=" + idCheckOutType + ", outType=" + outType + "]";
+		return outType;
 	}
 	public CheckOutType(int idCheckOutType, String outType) {
 		super();

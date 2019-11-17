@@ -39,7 +39,8 @@ public class Position {
 	}
 	@Override
 	public String toString() {
-		return "Position [idPosition=" + idPosition + ", type=" + type + "]";
+		//return "Position [idPosition=" + idPosition + ", type=" + type + "]";
+		return type;
 	}
 	
 	public String getType() {

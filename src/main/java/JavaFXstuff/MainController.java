@@ -100,4 +100,44 @@ public class MainController {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	@FXML
+	private void AddAdditionalService(ActionEvent event) throws Exception{
+		Stage primaryStage=new Stage();
+		Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/AdditionalService.fxml"));
+		primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
+		Scene scene = new Scene(root,960,540);
+		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+		@FXML
+		private void CheckOut(ActionEvent event) throws Exception{
+			Stage primaryStage=new Stage();
+			Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/CheckOut.fxml"));
+			primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
+			Scene scene = new Scene(root,960,540);
+			scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+	}
+		@FXML
+		private void UsersData(ActionEvent event) throws Exception{
+			Stage primaryStage=new Stage();
+			Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/UsersData.fxml"));
+			primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
+			Scene scene = new Scene(root,960,540);
+			scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+	}
+		@FXML
+		private void ReservationsData(ActionEvent event) throws Exception{
+			Stage primaryStage=new Stage();
+			Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/ReservationsData.fxml"));
+			primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
+			Scene scene = new Scene(root,960,540);
+			scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+	}
 }

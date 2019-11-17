@@ -95,16 +95,22 @@ public class ReservationController {
 	        {
 		        @Override
 		        public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
-		          System.out.println(ChoiceBox1.getItems().get((Integer) number2));
+		        	
+		        	try {//tozi try catch e za da moje kato se nulira choiceboxa sled promqna na data da ne hwarlq null pointer exception
+		        System.out.println(ChoiceBox1.getItems().get((Integer) number2));
 		          roomt1=(roomtypes.get(ChoiceBox1.getSelectionModel().getSelectedIndex()));
 		          save();
+		        	}
+		        	catch(Exception e) {
+		        		  
+		        	}
 		          
 		        }
 		      });
 	        user1=SessionUserHelper.getCurrentUser();
 	        hotel1=user1.getHotel();
-	        
-	        
+	        Date1.valueProperty().addListener((observable, oldDate, newDate)->{TableView1.setItems(null);ChoiceBox1.getSelectionModel().clearSelection();});//ako se promeni datata da se restartirat choicebox i izbora na tip na staq za da se prezaredi na nowo tableview sled towa
+	        Date2.valueProperty().addListener((observable, oldDate, newDate)->{TableView1.setItems(null);ChoiceBox1.getSelectionModel().clearSelection();});
 	    }
 	    public void save()
 	    {
@@ -166,7 +172,7 @@ public class ReservationController {
 	    }
 	    public void zapazwane()
 	    {
-	    	CheckOutType checkout1=new CheckOutType(1,"normal");
+	    	CheckOutType checkout1=new CheckOutType(4,"notCheckedOut");
 	    	double advPayment=Double.parseDouble(TextField1.getText().toString());
 	    	Room room1=rooms.get(TableView1.getSelectionModel().getSelectedIndex());
 	    	Reservation reserv1=new Reservation(fromDate1,toDate1,advPayment,checkout1,guest1,room1,user1,hotel1);
