@@ -2,6 +2,7 @@ package JavaFXstuff;
 
 import java.util.List;
 
+import org.controlsfx.control.Notifications;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -19,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +31,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 
 public class SearchGuestController {
 	
@@ -139,6 +142,11 @@ public class SearchGuestController {
     public Guest send()throws Exception
     {
     	Guest guest1=TableView1.getSelectionModel().getSelectedItem();
+    	if(guest1.getRating()<=45)
+    	{
+    		 Notifications notification=Notifications.create().title("Внимание").text("Гостът който избрахте е с лош рейтинг задължително 50% капаро:").hideAfter(Duration.seconds(20)).position(Pos.CENTER);
+    		 notification.showWarning();
+    	}
     	Stage stage = (Stage) Button1.getScene().getWindow();
     	stage.close();
     	return guest1;

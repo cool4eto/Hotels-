@@ -32,6 +32,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#UsersData" text="Служители" />
                   <MenuItem mnemonicParsing="false" onAction="#ReservationsData" text="Резервации" />
+                  <MenuItem mnemonicParsing="false" onAction="#RoomsData" text="Рейтинг на стаите" />
             </items>
           </Menu>
         </menus>

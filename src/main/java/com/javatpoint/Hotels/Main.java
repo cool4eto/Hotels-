@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -19,6 +21,8 @@ import queries.query;
 
 
 public class Main extends Application{
+
+	
 
 	public void start(Stage primaryStage) {
 		try {
@@ -36,6 +40,7 @@ public class Main extends Application{
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public static void main(String[] args) {
 		

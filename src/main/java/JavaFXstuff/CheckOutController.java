@@ -74,11 +74,6 @@ public class CheckOutController {
 			   query.setParameter("hotel1", hotel1);
 			   query.setParameter("notCheckedOut", notCheckedOut);
 	    	List<Reservation> reservations = query.list();
-	    	
-	    	for(int i =0;i<reservations.size();i++)
-	    	{
-	    		
-	    	}
 	    	dataList=FXCollections.observableArrayList(reservations);
 	    	FilteredList<Reservation> filteredData = new FilteredList(this.dataList, null);
 	    	this.TextField1.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -199,7 +194,7 @@ public class CheckOutController {
 	    	{
 	    		reserv1.setToDate(curDate);//za da moje da si polzwame staqta ako checkOutne rano ili ako ne doide
 	    		reserv1.setCheckOutType(types.get(ChoiceBox1.getSelectionModel().getSelectedIndex()));
-	    		
+	    		reserv1.getGuest().setRating(reserv1.getGuest().getRating()-10);//namalqme ratinga na gosta
 	    	}
 	    	else
 	    	{

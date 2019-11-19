@@ -172,10 +172,11 @@ public class ReservationController {
 	    }
 	    public void zapazwane()
 	    {
-	    	CheckOutType checkout1=new CheckOutType(4,"notCheckedOut");
+	    	CheckOutType checkout1=new CheckOutType(1,"notCheckedOut");
 	    	double advPayment=Double.parseDouble(TextField1.getText().toString());
 	    	Room room1=rooms.get(TableView1.getSelectionModel().getSelectedIndex());
 	    	Reservation reserv1=new Reservation(fromDate1,toDate1,advPayment,checkout1,guest1,room1,user1,hotel1);
+	    	guest1.setRating(guest1.getRating()+2);
 	    	System.out.println(reserv1);
 	    	reserv1.store();
 	    	Date1.setValue(null);
