@@ -89,8 +89,12 @@ public class RoomsDataController {
 	        			if(reservations.get(j).getRoom().getIdRoom()==(rooms.get(i).getIdRoom()))
 	        			{
 	        				timesReservated++;
-	        				daysReservated+=ChronoUnit.DAYS.between(reservations.get(j).getFromDate(), reservations.get(j).getToDate());
-	        				//tuk trqbwa da se oprawi zashtoto wzemam pulniq broi dni nezawisimo koga dali wsichki vlizat v range
+	        				//daysReservated+=ChronoUnit.DAYS.between(reservations.get(j).getFromDate(), reservations.get(j).getToDate());
+	        				
+	        				LocalDate maxStart = reservations.get(j).getFromDate().isAfter(firstDate) ? reservations.get(j).getFromDate() : firstDate;
+	        		        LocalDate minEnd = reservations.get(j).getToDate().isBefore(secondDate) ? reservations.get(j).getToDate() : secondDate;
+	        		        daysReservated+=  ChronoUnit.DAYS.between(maxStart,minEnd);
+	        		        
 	        				
 	        				
 	        			}
