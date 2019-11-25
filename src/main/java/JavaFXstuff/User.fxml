@@ -15,7 +15,7 @@
       <TextField fx:id="TextField2" layoutX="169.0" layoutY="68.0" />
       <TextField fx:id="TextField3" layoutX="169.0" layoutY="116.0" />
       <Label layoutX="67.0" layoutY="187.0" text="Избери Позиция" />
-      <Label layoutX="245.0" layoutY="187.0" text="Избери Хотел" />
+      <Label fx:id="Label1" layoutX="245.0" layoutY="187.0" text="Избери Хотел" />
       <ChoiceBox fx:id="ChoiceBox1" layoutX="53.0" layoutY="208.0" prefWidth="150.0" />
       <ChoiceBox fx:id="ChoiceBox2" layoutX="218.0" layoutY="208.0" prefWidth="150.0" />
       <Button fx:id="Button1" layoutX="368.0" layoutY="270.0" mnemonicParsing="false" onAction="#save" text="Запази" />

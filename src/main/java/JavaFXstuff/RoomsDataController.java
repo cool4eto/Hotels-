@@ -114,7 +114,7 @@ public class RoomsDataController {
 	        			
 	        			GridPane.setConstraints(label1,col,n-1);
 	        			col++;
-	        			if(daysReservated>=ChronoUnit.DAYS.between(firstDate,secondDate))//Swetwat ni w zeleno staite koito sa zaeti nad 50% ot wremeto
+	        			if(daysReservated>=ChronoUnit.DAYS.between(firstDate,secondDate)/2)//Swetwat ni w zeleno staite koito sa zaeti nad 50% ot wremeto
 	        				label1.setStyle("-fx-background-color:LightGreen");
 	        			GridPane1.getChildren().add(label1);
 	        			timesReservated=0;

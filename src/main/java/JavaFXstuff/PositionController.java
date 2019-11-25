@@ -35,7 +35,17 @@ public class PositionController {
 			if(positions.isEmpty())//prowerqwa dali lista po zadaden kriterii poziciqta koqto sme zadali e prazen i ako e towa oznachawa che nqmame takaw obekt i go sazdawa
 			{
 		Position pos1=new Position(TextField1.getText().toString());
+		try
+		{
+			if(TextField1.getText().trim().isEmpty())
+			throw new Exception();
 		pos1.store();
+		Notification.showOk();
+		}
+		catch(Exception e)
+		{
+			Notification.showWarning();
+		}
 			}
 			else //towa otwarq pop-up ako veche imame obekta w bazata danni
 				{

@@ -26,7 +26,7 @@
           <TableColumn fx:id="typeRoom" prefWidth="130.0" text="Тип" />
         </columns>
       </TableView>
-      <Button fx:id="Button2" layoutX="448.0" layoutY="270.0" mnemonicParsing="false" onAction="#save" text="Запази(оставен защото не знам дали трябва" />
+      <Button fx:id="Button2" layoutX="448.0" layoutY="270.0" mnemonicParsing="false" onAction="#save" text="Запази(оставен защото не знам дали трябва" visible="false" />
       <Button layoutX="533.0" layoutY="335.0" mnemonicParsing="false" onAction="#zapazwane" text="Вкараи в базата" />
    </children>
 </AnchorPane>

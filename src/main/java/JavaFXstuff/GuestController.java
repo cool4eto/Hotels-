@@ -46,7 +46,7 @@ public class GuestController {
 	    }
 	    @FXML
 	    void save()throws Exception {
-	    	
+	    	try {
 	    	if(contains())
 	    	{
 	    		//System.out.println("Weche go ima v bazata");
@@ -61,7 +61,15 @@ public class GuestController {
 	    	else
 	    	{
 	    		Guest guest1=new Guest(TextField1.getText().toString(),TextField2.getText().toString(),TextField3.getText().toString());
+	    		if(TextField1.getText().trim().isEmpty()||TextField2.getText().trim().isEmpty()||TextField3.getText().trim().isEmpty())
+	    			throw new Exception();
 		    	guest1.store();
+		    	Notification.showOk();
+	    	}
+	    	}
+	    	catch(Exception e)
+	    	{
+	    		Notification.showWarning();
 	    	}
 	    }
 	   

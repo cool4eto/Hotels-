@@ -60,8 +60,8 @@ public class RoomController {
         
     }
     public void save(ActionEvent event)throws Exception 
-	{//tuk trqbwa da dobawq prowerka dali e izbrano neshto i dali e wawedena staq i cena!!!!!!!!!!!!!
-    		//Room room1=new Room(Integer.parseInt(TextField1.getText().toString()),Double.parseDouble(TextField2.getText().toString()),ChoiceBox1.getSelectionModel().getSelectedItem(),ChoiceBox2.getSelectionModel().getSelectedItem());
+	{
+    	try {
 	Session session = HibernateUtil.getSessionFactory().openSession();
 	Hotel hotel=new Hotel();
     hotel =  (Hotel) session.get(Hotel.class, (ChoiceBox1.getSelectionModel().getSelectedIndex()+1));
@@ -69,6 +69,11 @@ public class RoomController {
     roomtype1 =  (RoomType) session.get(RoomType.class, (ChoiceBox2.getSelectionModel().getSelectedIndex()+1));
     Room room1=new Room(Integer.parseInt(TextField1.getText().toString()),Double.parseDouble(TextField2.getText().toString()),roomtype1,hotel);
     room1.store();
+	    Notification.showOk();
+    	}
+    	catch(Exception e) {
+    		Notification.showWarning();
+    	}
 	}
 	
 }

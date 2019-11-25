@@ -132,11 +132,19 @@ public class AdditionalServiceController {
 	    }
 	    @FXML 
 	    public void save()
-	    {
+	    {	try {
+	    	if(TextField1.getText().trim().isEmpty()||TextField2.getText().trim().isEmpty())
+    			throw new Exception();
 	    	Reservation reserv1=TableView1.getSelectionModel().getSelectedItem();
 	    	Service serv1=services.get(ChoiceBox1.getSelectionModel().getSelectedIndex());
 	    	Consumation cons1=new Consumation(Integer.parseInt(TextField2.getText().toString()),reserv1,serv1);
 	    	cons1.store();
+	    	Notification.showOk();
+	    }
+	    catch (Exception e)
+	    {
+	    	Notification.showWarning();
+	    }
 	    	
 	    }
 }

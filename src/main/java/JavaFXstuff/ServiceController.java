@@ -29,6 +29,9 @@ public class ServiceController {
 
 	    public void save()
 	    {
+	    	try {
+	    		if(TextField1.getText().trim().isEmpty()||TextField2.getText().trim().isEmpty())
+	    			throw new Exception();
 	    	Service serv1=new Service();
 	    	if(Radio1.isSelected())
 	    {
@@ -39,5 +42,11 @@ public class ServiceController {
 	    	serv1=new Service(TextField1.getText().toString(),Double.parseDouble(TextField2.getText().toString()),Radio2.getText().toString());
 	    }
 	    	serv1.store();
+	    	Notification.showOk();
 	    }
+	    catch(Exception e)
+	    {
+	    	Notification.showWarning();
+	    }
+	 }
 }

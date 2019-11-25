@@ -89,7 +89,7 @@ public class LoginController {
 	
 	public void Login(ActionEvent event)throws Exception
 	{
-		if(txtUsername.getText().equals("root")&&txtPassword.getText().equals("root"))//dawa prawo za logwane s root root
+		/*if(txtUsername.getText().equals("root")&&txtPassword.getText().equals("root"))//dawa prawo za logwane s root root
 		{
 			lbStatus.setText("Login Succes");
 			 Stage stage = (Stage) login1.getScene().getWindow();//tezi 2 reda sa za da zatworim login 
@@ -101,12 +101,13 @@ public class LoginController {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-		}
-		else if(CheckLogin(txtUsername.getText(),txtPassword.getText()))
+		}*/
+		 if(CheckLogin(txtUsername.getText(),txtPassword.getText()))
 		{
 			lbStatus.setText("Login Succes");
 			Stage stage = (Stage) login1.getScene().getWindow();//tezi 2 reda sa za da zatworim login 
 		    stage.close();
+		    SessionUserHelper.setCurrentUser(LoggedUser);
 		Stage primaryStage=new Stage();
 		Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/Main.fxml"));
 		Scene scene = new Scene(root,900,500);
@@ -114,7 +115,7 @@ public class LoginController {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 			//System.out.println(LoggedUser.toString());
-		SessionUserHelper.setCurrentUser(LoggedUser);
+		
 		}
 		else
 			lbStatus.setText("Login Failed");

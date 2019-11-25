@@ -127,7 +127,9 @@ public class CheckOutController {
 	    	double consumationsSum=0;
 	    	List<Consumation> consumations=null;
 	    	LocalDate fromDate=TableView1.getSelectionModel().getSelectedItem().getFromDate();
-	    	int days=Period.between(fromDate, curDate).getDays();//wzema dnite na noshtuvki
+	    	LocalDate toDate=TableView1.getSelectionModel().getSelectedItem().getToDate();//ako checkOut-va po-rano si plashta purvonachalno ugovorenata suma
+	    	int days=Period.between(fromDate, toDate).getDays();//wzema dnite na noshtuvki
+	    	//int days=Period.between(fromDate, curDate).getDays();//wzema dnite na noshtuvki
 	    	NightsSum=days*TableView1.getSelectionModel().getSelectedItem().getRoom().getRate();
 	    	Session session = HibernateUtil.getSessionFactory().openSession();
 	    	try {
@@ -190,6 +192,7 @@ public class CheckOutController {
 	  
 	    public void update()
 	    {
+	    	try {
 	    	if(reserv1.getToDate().isAfter(curDate))
 	    	{
 	    		reserv1.setToDate(curDate);//za da moje da si polzwame staqta ako checkOutne rano ili ako ne doide
@@ -201,6 +204,12 @@ public class CheckOutController {
 	    		reserv1.setCheckOutType(types.get(ChoiceBox1.getSelectionModel().getSelectedIndex()));
 	    	}
 	    	reserv1.update();
+	    	Notification.showOk();
+	    	}
+	    	catch(Exception e)
+	    	{
+	    		Notification.showWarning();
+	    	}
 	    }
 	    
 	    

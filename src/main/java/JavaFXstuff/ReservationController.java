@@ -3,6 +3,7 @@ package JavaFXstuff;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.controlsfx.control.Notifications;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -24,6 +25,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,6 +38,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 
 public class ReservationController {
 	 @FXML
@@ -172,6 +175,7 @@ public class ReservationController {
 	    }
 	    public void zapazwane()
 	    {
+	    	try {
 	    	CheckOutType checkout1=new CheckOutType(1,"notCheckedOut");
 	    	double advPayment=Double.parseDouble(TextField1.getText().toString());
 	    	Room room1=rooms.get(TableView1.getSelectionModel().getSelectedIndex());
@@ -184,6 +188,12 @@ public class ReservationController {
 	    	TextField1.setText("");
 	    	ChoiceBox1.setValue("");
 	    	TableView1.setItems(null);
+	    	Notification.showOk();
+	    	}
+	    	catch(Exception e)
+	    	{
+	    		Notification.showWarning();
+	    	}
 	    	
 	    	
 	    }
