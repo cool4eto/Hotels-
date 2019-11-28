@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -54,8 +55,9 @@ public class LoginController {
 			  } catch (Exception e) {
 			   e.printStackTrace();
 			  }finally{//close session
+				  
 			   session.close();
-			   System.out.println("Retreived correctly");
+			   
 			  }
 		
 		return false;
@@ -108,6 +110,7 @@ public class LoginController {
 			Stage stage = (Stage) login1.getScene().getWindow();//tezi 2 reda sa za da zatworim login 
 		    stage.close();
 		    SessionUserHelper.setCurrentUser(LoggedUser);
+		    
 		Stage primaryStage=new Stage();
 		Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/Main.fxml"));
 		Scene scene = new Scene(root,900,500);

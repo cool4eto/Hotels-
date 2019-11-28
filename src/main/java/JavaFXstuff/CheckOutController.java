@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -32,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class CheckOutController {
+	final static Logger logger = Logger.getLogger(Reservation.class);
 	private Hotel hotel1=SessionUserHelper.getCurrentUser().getHotel();//towa ukazwa za koi hotel shte barkame kato tarsim rezervaciqta
 	private LocalDate curDate = LocalDate.of(2019, 11, 26);//towa trqbwa da se zameni sus dneshna data kogato se polzwa naistina programata no za testwane mi warshi rabota
 	private ObservableList<Reservation> dataList = FXCollections.observableArrayList();
@@ -203,6 +205,7 @@ public class CheckOutController {
 	    	{
 	    		reserv1.setCheckOutType(types.get(ChoiceBox1.getSelectionModel().getSelectedIndex()));
 	    	}
+	    	logger.info("CheckedOut: "+reserv1.getIdReservation());
 	    	reserv1.update();
 	    	Notification.showOk();
 	    	}

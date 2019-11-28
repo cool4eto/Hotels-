@@ -3,6 +3,7 @@ package JavaFXstuff;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.controlsfx.control.Notifications;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -41,6 +42,7 @@ import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 public class ReservationController {
+	final static Logger logger = Logger.getLogger(Reservation.class);
 	 @FXML
 	    private DatePicker Date1;
 
@@ -183,6 +185,7 @@ public class ReservationController {
 	    	guest1.setRating(guest1.getRating()+2);
 	    	System.out.println(reserv1);
 	    	reserv1.store();
+	    	logger.info("Save: "+reserv1.toString());
 	    	Date1.setValue(null);
 	    	Date2.setValue(null);
 	    	TextField1.setText("");

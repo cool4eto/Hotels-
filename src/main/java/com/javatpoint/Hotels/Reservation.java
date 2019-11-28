@@ -208,6 +208,13 @@ public class Reservation {
 			   System.out.println("Storred correctly");
 			  }
 	}
+	@Override
+	public String toString() {
+		return "Reservation [idReservation=" + idReservation + ", fromDate=" + fromDate + ", toDate=" + toDate
+				+ ", advPayment=" + advPayment + ", checkedOut=" + checkedOut + ", checkOutType=" + checkOutType
+				+ ", guest=" + guest + ", room=" + room + ", user=" + user +  "]";
+	}
+	
 	
 	
 }

@@ -3,6 +3,7 @@ package JavaFXstuff;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -31,6 +32,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdditionalServiceController {
+	
+		final static Logger logger = Logger.getLogger(AdditionalServiceController.class);
 		private Hotel hotel1=SessionUserHelper.getCurrentUser().getHotel();//towa ukazwa za koi hotel shte barkame kato tarsim rezervaciqta
 		private LocalDate curDate = LocalDate.of(2019, 11, 26);//towa trqbwa da se zameni sus dneshna data kogato se polzwa naistina programata no za testwane mi warshi rabota
 		private ObservableList<Reservation> dataList = FXCollections.observableArrayList();
@@ -133,12 +136,13 @@ public class AdditionalServiceController {
 	    @FXML 
 	    public void save()
 	    {	try {
-	    	if(TextField1.getText().trim().isEmpty()||TextField2.getText().trim().isEmpty())
-    			throw new Exception();
+	    	if(TextField2.getText().trim().isEmpty())
+				throw new Exception();
 	    	Reservation reserv1=TableView1.getSelectionModel().getSelectedItem();
 	    	Service serv1=services.get(ChoiceBox1.getSelectionModel().getSelectedIndex());
 	    	Consumation cons1=new Consumation(Integer.parseInt(TextField2.getText().toString()),reserv1,serv1);
 	    	cons1.store();
+	    	logger.info("Saved cons №: "+cons1.getIdConsumation()+", for reservation: "+cons1.getReservation().getIdReservation()+" User: "+SessionUserHelper.getCurrentUser().getUsername()+" servicename: "+cons1.getService().getServiceName()+" times: "+cons1.getBroi());
 	    	Notification.showOk();
 	    }
 	    catch (Exception e)
