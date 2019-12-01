@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="JavaFXstuff.UsersDataController">
+   <children>
+      <TableView fx:id="TableView1" layoutX="37.0" layoutY="42.0" prefHeight="200.0" prefWidth="872.0">
+        <columns>
+          <TableColumn fx:id="idUser" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="username" prefWidth="104.0" text="username" />
+            <TableColumn fx:id="password" prefWidth="97.0" text="password" />
+            <TableColumn fx:id="name" prefWidth="206.0" text="Име" />
+            <TableColumn fx:id="loginstatus" prefWidth="89.0" text="Status" />
+            <TableColumn fx:id="regdate" prefWidth="179.0" text="Registration date" />
+            <TableColumn fx:id="position" prefWidth="121.0" text="Position" />
+        </columns>
+      </TableView>
+      <Button fx:id="Button1" layoutX="664.0" layoutY="255.0" mnemonicParsing="false" onAction="#fillTableView2" text="Данни за създадени резервации" />
+      <TableView fx:id="TableView2" layoutX="37.0" layoutY="312.0" prefHeight="200.0" prefWidth="597.0">
+        <columns>
+          <TableColumn fx:id="idReservation" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="fromDate" prefWidth="91.0" text="От Дата" />
+            <TableColumn fx:id="toDate" prefWidth="101.0" text="До Дата" />
+            <TableColumn fx:id="guest" prefWidth="220.0" text="Гост" />
+            <TableColumn fx:id="checkOutType" prefWidth="109.0" text="CheckOutType" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

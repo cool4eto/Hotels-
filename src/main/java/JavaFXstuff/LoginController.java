@@ -34,7 +34,7 @@ public class LoginController {
 	private Button login1;
 	 public User LoggedUser;//za da proverqwam koi user e lognat
 
-	Boolean CheckLogin(String username,String password)//trqbwa da si go probvam kogato wkaram user
+	public Boolean CheckLogin(String username,String password)//trqbwa da si go probvam kogato wkaram user
 	{
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {

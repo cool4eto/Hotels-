@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="540.0" prefWidth="960.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="JavaFXstuff.ReservationsDataController">
+   <children>
+      <TableView fx:id="TableView1" layoutX="167.0" layoutY="100.0" prefHeight="386.0" prefWidth="597.0">
+         <columns>
+            <TableColumn fx:id="idReservation" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="fromDate" prefWidth="91.0" text="От Дата" />
+            <TableColumn fx:id="toDate" prefWidth="101.0" text="До Дата" />
+            <TableColumn fx:id="guest" prefWidth="220.0" text="Гост" />
+            <TableColumn fx:id="checkOutType" prefWidth="109.0" text="CheckOutType" />
+         </columns>
+      </TableView>
+      <DatePicker fx:id="DatePicker1" layoutX="84.0" layoutY="35.0" />
+      <DatePicker fx:id="DatePicker2" layoutX="384.0" layoutY="35.0" />
+      <Label layoutX="14.0" layoutY="40.0" text="От дата:" />
+      <Label layoutX="325.0" layoutY="40.0" text="До дата:" />
+   </children>
+</AnchorPane>

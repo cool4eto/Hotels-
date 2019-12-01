@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXstuff.ServiceController">
+   <children>
+      <Label layoutX="39.0" layoutY="42.0" text="Име: " />
+      <Label layoutX="40.0" layoutY="84.0" text="Цена за брои:" />
+      <Label layoutX="40.0" layoutY="126.0" text="Сезон:" />
+      <RadioButton fx:id="Radio1" layoutX="148.0" layoutY="126.0" mnemonicParsing="false" selected="true" text="Лято">
+         <toggleGroup>
+            <ToggleGroup fx:id="Group1" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="Radio2" layoutX="214.0" layoutY="126.0" mnemonicParsing="false" text="Зима" toggleGroup="$Group1" />
+      <TextField fx:id="TextField1" layoutX="148.0" layoutY="37.0" />
+      <TextField fx:id="TextField2" layoutX="148.0" layoutY="79.0" />
+      <Button fx:id="Button1" layoutX="182.0" layoutY="165.0" mnemonicParsing="false" onAction="#save" text="Въведи" />
+   </children>
+</AnchorPane>
