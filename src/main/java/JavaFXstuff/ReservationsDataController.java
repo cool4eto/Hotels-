@@ -168,7 +168,7 @@ public class ReservationsDataController {
 	
 		
     	Alert alert = new Alert(AlertType.INFORMATION);
-    	
+    	alert.setHeaderText("Справка: ");
     	alert.setContentText(textForAlertBox);
     	
     	alert.showAndWait();

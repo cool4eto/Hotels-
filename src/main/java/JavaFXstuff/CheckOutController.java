@@ -35,7 +35,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class CheckOutController {
 	final static Logger logger = Logger.getLogger(Reservation.class);
 	private Hotel hotel1=SessionUserHelper.getCurrentUser().getHotel();//towa ukazwa za koi hotel shte barkame kato tarsim rezervaciqta
-	private LocalDate curDate = LocalDate.of(2019, 11, 26);//towa trqbwa da se zameni sus dneshna data kogato se polzwa naistina programata no za testwane mi warshi rabota
+	private LocalDate curDate = SessionUserHelper.getCurDate();//towa trqbwa da se zameni sus dneshna data kogato se polzwa naistina programata no za testwane mi warshi rabota
 	private ObservableList<Reservation> dataList = FXCollections.observableArrayList();
 	private Reservation reserv1=new Reservation();//polzwam go za da zapazq selektiranata rezervaciq
 	 @FXML

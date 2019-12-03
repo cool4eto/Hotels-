@@ -40,6 +40,7 @@ import com.javatpoint.Hotels.Reservation;
 
 
 public class MainController {
+		private User user1 = new User();
 	 private List<User> users;
 	@FXML
     private Label Label1;
@@ -128,6 +129,13 @@ public class MainController {
 				   }
 	    		notificationBuilder.showInformation();
 	        }
+	        
+	        if(currentTime.getHour()==23&&currentTime.getMinute()==59&&currentTime.getSecond()==59)
+	        {//za da moje v 12 chasa da se uvelichava datata s 1
+	        	SessionUserHelper.setCurDate(SessionUserHelper.getCurDate().plusDays(1));
+	        	
+	        }
+	        
 	    }),
 	         new KeyFrame(Duration.seconds(1))
 	    );
@@ -138,6 +146,7 @@ public class MainController {
 	    fillHotelsChoiceBox();
 	    listeners();
 	    
+	    
     }
 	
 	void fillHotelsChoiceBox()
@@ -145,8 +154,6 @@ public class MainController {
 		 if(SessionUserHelper.getCurrentUser().getPosition().toString().equals("root")||SessionUserHelper.getCurrentUser().getPosition().toString().equals("Собственик"))
 		    {
 		    	ChoiceBox1.setVisible(true);
-		    	
-		    	
 		    	Session session = HibernateUtil.getSessionFactory().openSession();
 		    	String hql = "from User where username=:username1 and password=:pass1";
 		    	Query query = session.createQuery(hql);
@@ -391,7 +398,7 @@ public class MainController {
 	}
 	@FXML
 	public void listeners()
-	{
+	{		
 		ChangeListener<String> changeListener = new ChangeListener<String>() {
             public void changed(ObservableValue<? extends String> observable, //
                     String oldValue, String newValue) {
@@ -399,7 +406,25 @@ public class MainController {
                 	for(int i =0;i<users.size();i++)
             		{
             			if(users.get(i).getHotel().getHotelName().equals(newValue))
+            			{
             				SessionUserHelper.setCurrentUser(users.get(i));
+            				Session session = HibernateUtil.getSessionFactory().openSession();
+            				session.beginTransaction();  
+            				for(int j =0;j<users.size();j++)
+            				{
+            					if(users.get(j).getHotel().getHotelName().equals(oldValue))
+            					{
+            					user1=users.get(j);
+            					user1.setLoginstatus(false);
+            					}
+            				}
+            				
+            				SessionUserHelper.getCurrentUser().setLoginstatus(true);
+            				session.update(user1);
+            				session.update(SessionUserHelper.getCurrentUser());
+          				  session.getTransaction().commit();
+          				  session.close();
+            			}
             			Label2.setText(newValue);
             		}
                 }
@@ -410,7 +435,7 @@ public class MainController {
 		
 	}
 	
-		
+	
 		
 		
 		

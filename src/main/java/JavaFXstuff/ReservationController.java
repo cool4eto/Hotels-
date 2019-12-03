@@ -169,7 +169,14 @@ public class ReservationController {
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.showAndWait();
+			try {
 			this.guest1=guestController.send();
+			
+			}
+			catch(Exception e)
+			{
+				Notification.showWarning();
+			}
 			//System.out.println(this.guest1);
 			//System.out.println(SessionUserHelper.getCurrentUser());
 			
@@ -181,6 +188,7 @@ public class ReservationController {
 	    	CheckOutType checkout1=new CheckOutType(1,"notCheckedOut");
 	    	double advPayment=Double.parseDouble(TextField1.getText().toString());
 	    	Room room1=rooms.get(TableView1.getSelectionModel().getSelectedIndex());
+	    	if(guest1.getName().equals(""))throw new Exception(); 
 	    	Reservation reserv1=new Reservation(fromDate1,toDate1,advPayment,checkout1,guest1,room1,user1,hotel1);
 	    	guest1.setRating(guest1.getRating()+2);
 	    	System.out.println(reserv1);
