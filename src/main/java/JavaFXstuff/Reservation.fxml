@@ -27,6 +27,6 @@
         </columns>
       </TableView>
       <Button fx:id="Button2" layoutX="448.0" layoutY="270.0" mnemonicParsing="false" onAction="#save" text="Запази(оставен защото не знам дали трябва" visible="false" />
-      <Button layoutX="533.0" layoutY="335.0" mnemonicParsing="false" onAction="#zapazwane" text="Вкараи в базата" />
+      <Button layoutX="533.0" layoutY="335.0" mnemonicParsing="false" onAction="#zapazwane" text="Запази" />
    </children>
 </AnchorPane>

@@ -33,6 +33,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -47,6 +48,8 @@ public class MainController {
 
     @FXML
     private Label Label2;
+    @FXML
+    private Label Label3;
     
     @FXML
     private MenuItem typeRoom;
@@ -107,27 +110,7 @@ public class MainController {
 	       // System.out.println((currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond()));
 	        if(currentTime.getHour()==11&&currentTime.getMinute()==00&&currentTime.getSecond()==0)
 	        {
-	        	CheckOutType notCheckedOut = new CheckOutType(1,"notCheckedOut");
-	    		Hotel hotel1=SessionUserHelper.getCurrentUser().getHotel();
-	        	Session session = HibernateUtil.getSessionFactory().openSession();
-	        	String hql = "from Reservation where  hotel=:hotel1 AND toDate=:curDate And checkOutType=:notCheckedOut";
-		    	Query query = session.createQuery(hql);
-		    	query.setParameter("curDate",SessionUserHelper.getCurDate());
-				   query.setParameter("hotel1", hotel1);
-				   query.setParameter("notCheckedOut", notCheckedOut);
-				   List<Reservation> reservations = query.list();
-				   String stringForNotification="";
-				   for(int i =0;i <reservations.size();i++)
-				   {
-					   stringForNotification+=reservations.get(i).getRoom();
-					   stringForNotification+="; ";
-				   }
-				   Notifications notificationBuilder=Notifications.create().title("Стаите които трябва да напуснат днес са:").text(stringForNotification).hideAfter(Duration.seconds(60)).position(Pos.TOP_RIGHT);
-				   if(reservations.isEmpty())
-				   {
-					    notificationBuilder=Notifications.create().title("Днес няма стаи които трябва да напускат").hideAfter(Duration.seconds(60)).position(Pos.TOP_RIGHT);
-				   }
-	    		notificationBuilder.showInformation();
+	        	roomsForCheckOutNotification();
 	        }
 	        
 	        if(currentTime.getHour()==23&&currentTime.getMinute()==59&&currentTime.getSecond()==59)
@@ -148,12 +131,37 @@ public class MainController {
 	    
 	    
     }
-	
+	@FXML
+	public void roomsForCheckOutNotification()
+	{
+		CheckOutType notCheckedOut = new CheckOutType(1,"notCheckedOut");
+		Hotel hotel1=SessionUserHelper.getCurrentUser().getHotel();
+    	Session session = HibernateUtil.getSessionFactory().openSession();
+    	String hql = "from Reservation where  hotel=:hotel1 AND toDate=:curDate And checkOutType=:notCheckedOut";
+    	Query query = session.createQuery(hql);
+    	query.setParameter("curDate",SessionUserHelper.getCurDate());
+		   query.setParameter("hotel1", hotel1);
+		   query.setParameter("notCheckedOut", notCheckedOut);
+		   List<Reservation> reservations = query.list();
+		   String stringForNotification="";
+		   for(int i =0;i <reservations.size();i++)
+		   {
+			   stringForNotification+=reservations.get(i).getRoom();
+			   stringForNotification+="; ";
+		   }
+		   Notifications notificationBuilder=Notifications.create().title("Стаите които трябва да напуснат днес са:").text(stringForNotification).hideAfter(Duration.seconds(60)).position(Pos.TOP_RIGHT);
+		   if(reservations.isEmpty())
+		   {
+			    notificationBuilder=Notifications.create().title("Днес няма стаи които трябва да напускат").hideAfter(Duration.seconds(60)).position(Pos.TOP_RIGHT);
+		   }
+		notificationBuilder.showInformation();
+	}
 	void fillHotelsChoiceBox()
 	{
 		 if(SessionUserHelper.getCurrentUser().getPosition().toString().equals("root")||SessionUserHelper.getCurrentUser().getPosition().toString().equals("Собственик"))
 		    {
 		    	ChoiceBox1.setVisible(true);
+		    	Label3.setVisible(true);
 		    	Session session = HibernateUtil.getSessionFactory().openSession();
 		    	String hql = "from User where username=:username1 and password=:pass1";
 		    	Query query = session.createQuery(hql);
@@ -250,6 +258,8 @@ public class MainController {
 		primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
 		Scene scene = new Scene(root,450,165);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Тип на стая");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -260,6 +270,8 @@ public class MainController {
 		primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
 		Scene scene = new Scene(root,450,165);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Тип на напускане");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -272,6 +284,8 @@ public class MainController {
 		Scene scene = new Scene(root,450,165);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Създаване на хотел");
 		primaryStage.showAndWait();
 		fillHotelsChoiceBox();
 	}
@@ -282,6 +296,8 @@ public class MainController {
 		primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
 		Scene scene = new Scene(root,960,540);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Създаване на стая");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -292,6 +308,8 @@ public class MainController {
 		primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
 		Scene scene = new Scene(root,450,165);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Създаване на позиция");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -303,6 +321,8 @@ public class MainController {
 		Scene scene = new Scene(root,960,540);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Създаване на нов портебител");
 		primaryStage.show();
 	}
 	@FXML
@@ -313,6 +333,8 @@ public class MainController {
 		Scene scene = new Scene(root,640,360);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Създаване на нова допълнителна услуга");
 		primaryStage.show();
 	}
 	@FXML
@@ -323,6 +345,8 @@ public class MainController {
 		Scene scene = new Scene(root,640,360);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Добавяне на нов гост");
 		primaryStage.show();
 		
 	}
@@ -334,6 +358,8 @@ public class MainController {
 		Scene scene = new Scene(root,960,540);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Търсене на гост");
 		primaryStage.show();
 	}
 	@FXML
@@ -344,6 +370,8 @@ public class MainController {
 		Scene scene = new Scene(root,960,540);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Създаване на резервация");
 		primaryStage.show();
 	}
 	@FXML
@@ -354,6 +382,8 @@ public class MainController {
 		Scene scene = new Scene(root,960,540);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 		primaryStage.setScene(scene);
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Начисляване на допълнителна услуга");
 		primaryStage.show();
 	}
 		@FXML
@@ -364,6 +394,8 @@ public class MainController {
 			Scene scene = new Scene(root,960,540);
 			scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image("queries/hotel.png"));
+			primaryStage.setTitle("Напускане на гост");
 			primaryStage.show();
 	}
 		@FXML
@@ -374,6 +406,8 @@ public class MainController {
 			Scene scene = new Scene(root,960,540);
 			scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image("queries/hotel.png"));
+			primaryStage.setTitle("Справка за служители");
 			primaryStage.show();
 	}
 		@FXML
@@ -384,6 +418,8 @@ public class MainController {
 			Scene scene = new Scene(root,960,540);
 			scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image("queries/hotel.png"));
+			primaryStage.setTitle("Справка за резервации");
 			primaryStage.show();
 	}
 		@FXML
@@ -394,6 +430,8 @@ public class MainController {
 			Scene scene = new Scene(root,960,540);
 			scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image("queries/hotel.png"));
+			primaryStage.setTitle("Справка по стаи");
 			primaryStage.show();
 	}
 	@FXML

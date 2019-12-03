@@ -154,6 +154,8 @@ public class LoginController {
 		Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/Main.fxml"));
 		Scene scene = new Scene(root,900,500);
 		scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
+		primaryStage.getIcons().add(new Image("queries/hotel.png"));
+		primaryStage.setTitle("Хотелска програма");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {//kato izlizame logina da stava 0
