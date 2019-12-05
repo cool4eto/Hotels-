@@ -176,7 +176,8 @@ public class RoomsDataController {
 	    {
 	    	DatePicker1.valueProperty().addListener((ov, oldValue, newValue) -> {
 	    		try {
-	    			GridPane1.getChildren().clear();
+	    			GridPane1.getChildren().clear();//pochistwa gridpane za da moje da ne se naslagat edno warhu drugu
+	    			GridPane2.getChildren().clear();
 	    		 firstDate=DatePicker1.getValue();
 	    		 secondDate=DatePicker2.getValue();
 	             getReservations();
@@ -186,6 +187,7 @@ public class RoomsDataController {
 	    	 DatePicker2.valueProperty().addListener((ov, oldValue, newValue) -> {
 	    		 try {
 	    			 GridPane1.getChildren().clear();
+	    			 GridPane2.getChildren().clear();
 	    		 firstDate=DatePicker1.getValue();
 	    		 secondDate=DatePicker2.getValue();
 	            getReservations();

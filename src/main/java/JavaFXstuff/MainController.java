@@ -455,7 +455,7 @@ public class MainController {
 			Stage primaryStage=new Stage();
 			Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/RoomsData.fxml"));
 			primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
-			Scene scene = new Scene(root,960,640);
+			Scene scene = new Scene(root,960,600);
 			scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image("queries/hotel.png"));
