@@ -1,5 +1,6 @@
 package JavaFXstuff;
 
+import java.awt.Color;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,6 +35,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
+import javafx.scene.shape.Circle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -98,6 +100,8 @@ public class MainController {
 
     @FXML
     private ChoiceBox<String> ChoiceBox1;
+    @FXML
+    private Circle notificationCircle;
 	@FXML
     public void initialize()
     {
@@ -108,7 +112,7 @@ public class MainController {
 		Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
 	        LocalTime currentTime = LocalTime.now();
 	       // System.out.println((currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond()));
-	        if(currentTime.getHour()==11&&currentTime.getMinute()==00&&currentTime.getSecond()==0)
+	        if(currentTime.getHour()==11&&currentTime.getMinute()==00&&currentTime.getSecond()==00)
 	        {
 	        	roomsForCheckOutNotification();
 	        }
@@ -116,9 +120,8 @@ public class MainController {
 	        if(currentTime.getHour()==23&&currentTime.getMinute()==59&&currentTime.getSecond()==59)
 	        {//za da moje v 12 chasa da se uvelichava datata s 1
 	        	SessionUserHelper.setCurDate(SessionUserHelper.getCurDate().plusDays(1));
-	        	
+	        	notificationCircleShower();// za da moje kato minem w drugiq den da ni zadawa otnowo notifikaciq ako ima stai koito shte napuskat
 	        }
-	        
 	    }),
 	         new KeyFrame(Duration.seconds(1))
 	    );
@@ -128,21 +131,14 @@ public class MainController {
 	    removeElementsFromUi();
 	    fillHotelsChoiceBox();
 	    listeners();
+	    notificationCircleShower();
 	    
 	    
     }
 	@FXML
 	public void roomsForCheckOutNotification()
 	{
-		CheckOutType notCheckedOut = new CheckOutType(1,"notCheckedOut");
-		Hotel hotel1=SessionUserHelper.getCurrentUser().getHotel();
-    	Session session = HibernateUtil.getSessionFactory().openSession();
-    	String hql = "from Reservation where  hotel=:hotel1 AND toDate=:curDate And checkOutType=:notCheckedOut";
-    	Query query = session.createQuery(hql);
-    	query.setParameter("curDate",SessionUserHelper.getCurDate());
-		   query.setParameter("hotel1", hotel1);
-		   query.setParameter("notCheckedOut", notCheckedOut);
-		   List<Reservation> reservations = query.list();
+			List<Reservation>reservations=this.toCheckOutFiller();
 		   String stringForNotification="";
 		   for(int i =0;i <reservations.size();i++)
 		   {
@@ -156,6 +152,37 @@ public class MainController {
 		   }
 		notificationBuilder.showInformation();
 	}
+	@FXML
+	public List<Reservation> toCheckOutFiller()//popalva list s rezervaciite koito trqbwa da napusnat dnes
+	{
+		CheckOutType notCheckedOut = new CheckOutType(1,"notCheckedOut");
+		Hotel hotel1=SessionUserHelper.getCurrentUser().getHotel();
+    	Session session = HibernateUtil.getSessionFactory().openSession();
+    	String hql = "from Reservation where  hotel=:hotel1 AND toDate=:curDate And checkOutType=:notCheckedOut";
+    	Query query = session.createQuery(hql);
+    	query.setParameter("curDate",SessionUserHelper.getCurDate());
+		   query.setParameter("hotel1", hotel1);
+		   query.setParameter("notCheckedOut", notCheckedOut);
+		   List<Reservation> reservations = query.list();
+		   return reservations;
+	}
+	@FXML
+	public void notificationCircleShower()//funkciq koqto ni pokazwa ili skriva kragcheto v zawisimost dali dnes ima stai koito da napuskat
+	{	//izwikwa se pri startirane na programata pri check out
+		List<Reservation>reservations=this.toCheckOutFiller();
+	    if(reservations.isEmpty())
+	    {
+	    notificationCircle.setVisible(false);
+	    }
+	    else
+	    {
+	    	notificationCircle.setVisible(true);
+	    }
+	}
+	
+	
+	
+	
 	void fillHotelsChoiceBox()
 	{
 		 if(SessionUserHelper.getCurrentUser().getPosition().toString().equals("root")||SessionUserHelper.getCurrentUser().getPosition().toString().equals("Собственик"))
@@ -396,7 +423,8 @@ public class MainController {
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image("queries/hotel.png"));
 			primaryStage.setTitle("Напускане на гост");
-			primaryStage.show();
+			primaryStage.showAndWait();
+			notificationCircleShower();//towa go prawim za da mahne kragcheto za notifikaciqta kogato nqma stai za napuskane weche
 	}
 		@FXML
 		private void UsersData(ActionEvent event) throws Exception{
@@ -427,7 +455,7 @@ public class MainController {
 			Stage primaryStage=new Stage();
 			Parent root=FXMLLoader.load(getClass().getResource("/JavaFxstuff/RoomsData.fxml"));
 			primaryStage.initModality(Modality.APPLICATION_MODAL);//da ne moje da pipa drugade
-			Scene scene = new Scene(root,960,540);
+			Scene scene = new Scene(root,960,640);
 			scene.getStylesheets().add(getClass().getResource("/JavaFxstuff/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.getIcons().add(new Image("queries/hotel.png"));

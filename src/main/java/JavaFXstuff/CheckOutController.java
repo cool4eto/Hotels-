@@ -208,6 +208,7 @@ public class CheckOutController {
 	    	logger.info("CheckedOut: "+reserv1.getIdReservation());
 	    	reserv1.update();
 	    	Notification.showOk();
+	    	
 	    	}
 	    	catch(Exception e)
 	    	{

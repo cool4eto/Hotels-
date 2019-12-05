@@ -11,6 +11,7 @@ import com.javatpoint.Hotels.HibernateUtil;
 import com.javatpoint.Hotels.Hotel;
 import com.javatpoint.Hotels.Reservation;
 import com.javatpoint.Hotels.Room;
+import com.javatpoint.Hotels.RoomType;
 import com.javatpoint.Hotels.SessionUserHelper;
 
 import javafx.collections.FXCollections;
@@ -21,6 +22,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
 public class RoomsDataController {
@@ -31,6 +33,8 @@ public class RoomsDataController {
 	private List<Room> rooms;
 	 @FXML
 	    private GridPane GridPane1;
+	 @FXML
+	    private GridPane GridPane2;
 
 	    @FXML
 	    private DatePicker DatePicker1;
@@ -39,6 +43,10 @@ public class RoomsDataController {
 	    private DatePicker DatePicker2;
 	    @FXML
 	    private Label label1;
+	    @FXML
+	    private Label label;
+	    @FXML
+	    private AnchorPane AnchorPane1;
 
 	    public void initialize()
 	    {
@@ -63,6 +71,47 @@ public class RoomsDataController {
 			   query.setParameter("hotel1", hotel1);
 			    reservations = query.list();
 			    getAllRooms();
+			    getTimesReservedByType();
+	    }
+	    
+	    @FXML
+	    public void getTimesReservedByType()
+	    {	
+	    	List<RoomType> roomtypes;
+	    	int counter=0;
+	    	Session session = HibernateUtil.getSessionFactory().openSession();
+	    	String hql = "from RoomType";
+	    	Query query = session.createQuery(hql);
+	    	
+	    	roomtypes = query.list();
+	    	label=new Label("Разбивка на стаите:");
+	    	GridPane.setConstraints(label,0,0);
+	    	GridPane2.getChildren().add(label);
+	    	
+	    	Label lab=new Label("Тип:");
+	    	GridPane.setConstraints(lab,0,1);
+	    	GridPane2.getChildren().add(lab);
+	    	
+	    	lab=new Label("Брой наемания:");
+	    	GridPane.setConstraints(lab,1,1);
+	    	GridPane2.getChildren().add(lab);
+	    	
+	    	for(int i=0;i<roomtypes.size();i++)
+	    	{
+	    	for(int j=0;j<reservations.size();j++)
+	    	{
+	    		if(reservations.get(j).getRoom().getRoomtype().toString().equals(roomtypes.get(i).toString()))
+	    		counter++;
+	    	}
+	    	Label label1=new Label(roomtypes.get(i).getTypeRoom());
+	    	Label label2 =new Label(Integer.toString(counter));
+	    	GridPane.setConstraints(label1,0,i+2);
+	    	GridPane.setConstraints(label2,1,i+2);
+	    	GridPane2.getChildren().add(label1);
+	    	GridPane2.getChildren().add(label2);
+	    	counter=0;
+	    	
+	    	}
 	    }
 	    
 	    @FXML

@@ -6,6 +6,7 @@ public class SessionUserHelper //polzwa se za da mojem da dostapim loggeduser w 
 {
 	private static User currentUser;
 	private static LocalDate curDate = LocalDate.of(2019, 11, 26);
+	//private static LocalDate curDate = LocalDate.of(2019, 12, 1);//za testwane na notifikaciqta penka staq 103
 	//private static LocalDate curDate = LocalDate.of(2021, 11, 26);
 	public static LocalDate getCurDate() {
 		return curDate;
