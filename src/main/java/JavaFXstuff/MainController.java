@@ -490,6 +490,7 @@ public class MainController {
             				session.update(SessionUserHelper.getCurrentUser());
           				  session.getTransaction().commit();
           				  session.close();
+          				notificationCircleShower();
             			}
             			Label2.setText(newValue);
             		}
